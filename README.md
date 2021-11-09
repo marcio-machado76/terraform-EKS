@@ -1,7 +1,7 @@
 # Terraform + AWS EKS
 - [x] Status:  Ainda em desenvolvimento.
 ## Descrição do projeto
- - Este projeto tem como objetivo automatizar a criação de um cluster kubernetes na AWS utilizando o terraform para criar a infraestrutura necessáriapara o EKS.
+ - Este projeto tem como objetivo automatizar a criação de um cluster kubernetes na AWS utilizando o terraform para criar a infraestrutura necessária para o EKS.
  - O Amazon Elastic Kubernetes Service (Amazon EKS) é um serviço de contêiner gerenciado para executar e escalar aplicações 
   do Kubernetes.
  - Este projeto tem uma estrutura separada por módulos e para que fique mais dinâmico e fácil fazer alterações, todas as variáveis estão concentradas no 
