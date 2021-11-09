@@ -105,20 +105,20 @@ Agora é só executar os comandos do terraform:
 * `terraform apply` - Para aplicar a criação/alteração dos recursos. 
 
 ### Aguarde a criação do cluster EKS, após concluir execute os comandos abaixo:
-* Conectar ao cluster.
-$ aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)
+* Conectar ao cluster.            
+  `$ aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)`
 
-* Pegar o kubeconfig.
-$ aws sts get-caller-identity
+* Pegar o kubeconfig.            
+  `$ aws sts get-caller-identity`
 
-* Preencha o espaço abaixo com o nome do cluster e execute o comando.
-$ aws eks --region us-east-1 update-kubeconfig --name <NOME_CLUSTER>
+* Preencha o espaço abaixo com o nome do cluster e execute o comando.            
+  `$ aws eks --region us-east-1 update-kubeconfig --name <NOME_CLUSTER>`
 
-* Verificar o kubeconfig.
-$ cat ~/.kube/config
+* Verificar o kubeconfig.            
+  `$ cat ~/.kube/config`
 
-* Verificar os nós do cluster.
-$ kubectl get nodes
+* Verificar os nós do cluster.            
+  `$ kubectl get nodes`
 
 * Para destruir toda a estrutura criada execute o comando abaixo.
 * `terraform destroy` - Para destruir todos os recursos que foram criados pelo terraform. 
