@@ -88,7 +88,7 @@
 
 #
 ### Comandos
-Para executar comandos no cluster é necessário ter o docker e o kubectl instalados.
+Para executar comandos no cluster é necessário ter o docker e o kubectl instalados.            
 Para utilizar os módulos deste repositório é necessário ter o terraform instalado ou utilizar o container do terraform dentro da pasta do seu projeto da seguinte forma:
 
 * `docker run -it --rm -v $PWD:/app -w /app --entrypoint "" hashicorp/terraform:light sh` 
