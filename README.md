@@ -6,7 +6,7 @@
   do Kubernetes.
  - Este projeto tem uma estrutura separada por módulos e para que fique mais dinâmico e fácil fazer alterações, todas as variáveis estão concentradas no 
   módulo root no arquivo `terraform.tfvars`.
- - Para facilitar a identificação dos recursos criados neste projeto foi utilizado um recurso conhecido como `default tags`, que tem a capacidade de 
+ - Para facilitar a identificação dos recursos criados neste projeto foi utilizado uma opção de tags conhecida como `default tags`, que tem a capacidade de 
   definir tags padrão no nível do provedor, simplificando o gerenciamento de tags. Com este recurso podemos definir tags padrão no bloco do provedor na 
   configuração do terraform e todas as tags definidas ali também serão herdadas por módulos dependentes do terraform, **exceto** o `auto scaling groups` que possue 
   uma solução alternativa.
