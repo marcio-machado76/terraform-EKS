@@ -58,6 +58,11 @@ variable "node_instances_type" {
   type        = string
 }
 
+variable "key" {
+  description = "Nome da key pair"
+  type        = string
+}
+
 # security group
 #
 variable "sg-cidr" {
@@ -68,12 +73,12 @@ variable "sg-cidr" {
 
 variable "tag-sg" {
   description = "Tag name do security group"
-  type = string
+  type        = string
 }
 
 # Local file
 #
 variable "file" {
   description = "Local e nome do arquivo para armazenar o output do kubeconfig-certificate"
-  type = string
+  type        = string
 }

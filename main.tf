@@ -38,11 +38,11 @@ module "security_group" {
 }
 
 module "cluster" {
-  source         = "./cluster"
-  vpc            = module.network.vpc
-  private_subnet = module.network.private_subnet
-  cluster_name   = local.cluster_name
-  tagcluster     = var.tagcluster
+  source            = "./cluster"
+  vpc               = module.network.vpc
+  private_subnet    = module.network.private_subnet
+  cluster_name      = local.cluster_name
+  tagcluster        = var.tagcluster
   security_group_id = module.security_group.security_group_id
 }
 
@@ -54,9 +54,11 @@ module "worknodes" {
   tagworknodes        = var.tagworknodes
   eks-cluster         = module.cluster.eks-cluster
   node_instances_type = var.node_instances_type
+  security_group_id   = module.security_group.security_group_id
+  key                 = var.key
 }
 
 resource "local_file" "kubeconfig" {
-    content  = module.cluster.kubeconfig-certificate-authority-data
-    filename = var.file
+  content  = module.cluster.kubeconfig-certificate-authority-data
+  filename = var.file
 }

@@ -30,12 +30,12 @@ output "aws_nat_gateway" {
 
 #
 output "cluster_name" {
-  value = local.cluster_name
+  value       = local.cluster_name
   description = "Nome do cluster"
 }
 
 output "eks-cluster" {
-  value = module.cluster.eks-cluster
+  value       = module.cluster.eks-cluster
   description = "id name do EKS "
 }
 
@@ -57,5 +57,5 @@ output "security_group_id" {
 output "kubeconfig-certificate-authority-data" {
   description = "C.A do Cluster"
   value       = module.cluster.kubeconfig-certificate-authority-data
-  sensitive = true
+  sensitive   = true
 }

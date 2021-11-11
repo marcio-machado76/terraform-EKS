@@ -6,7 +6,7 @@ region = "us-east-1"
 # variáveis utilizadas em todos os recursos da VPC
 cidr = "10.10.0.0/16"
 
-count_available = 3     #quantidade de subnets desejadas 
+count_available = 3 #quantidade de subnets desejadas 
 
 tag_vpc = "vpc-devops"
 
@@ -36,14 +36,16 @@ auto_scale_options = {
   desired = 3
 }
 
+key = "myKeyPair"
+
 # security group
 #
 tag-sg = "sg-cluster_EKS"
 
 sg-cidr = {
-  22 = { to_port = 22, description = "Entrada ssh", protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] }
-  80 = { to_port = 80, description = "Entrada ssh", protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] }
-  443 = { to_port = 443, description = "Entrada ssh", protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] }
+  22   = { to_port = 22, description = "Entrada ssh", protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] }
+  80   = { to_port = 80, description = "Entrada ssh", protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] }
+  443  = { to_port = 443, description = "Entrada ssh", protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] }
   8080 = { to_port = 8080, description = "Entrada ssh", protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] }
 }
 

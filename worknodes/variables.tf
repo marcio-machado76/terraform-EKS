@@ -25,5 +25,14 @@ variable "node_instances_type" {
 
 variable "eks-cluster" {
   description = "id do cluster EKS"
-  type = string
+  type        = string
+}
+
+variable "security_group_id" {
+  description = "Id do security group"
+}
+
+variable "key" {
+  description = "Nome da key pair"
+  type        = string
 }

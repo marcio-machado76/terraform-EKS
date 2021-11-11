@@ -20,7 +20,7 @@ variable "tag_vpc" {
 
 variable "aws_nat_gateway" {
   description = "nat gateway id"
-  type = list(string)
+  type        = list(string)
 }
 
 variable "tag_igw" {

@@ -11,5 +11,5 @@ variable "sg-cidr" {
 
 variable "tag-sg" {
   description = "Tag name do security group"
-  type = string
+  type        = string
 }
