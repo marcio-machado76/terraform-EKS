@@ -36,3 +36,9 @@ variable "key" {
   description = "Nome da key pair"
   type        = string
 }
+
+variable "key_path" {
+  description = "Public key path"
+  default     = "/home/usuario/.ssh/id_rsa.pub"
+}
+

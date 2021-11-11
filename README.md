@@ -87,7 +87,7 @@
   - Para utilizar localmente , baixe o repositório e altere as variáveis localizadas no arquivo `terraform.tfvars` de acordo com a necessidade.
   - A variável `count_available` define o quantidade de zonas de disponibilidade, públicas e privadas que seram criadas.
   - A variável `key` especifica o nome da **key pair** existente na AWS, certifique-se que ja possua uma ou então à crie e utilize na variável.   
-      - Caso esteja usando o Linux e queira usar como **key pair** sua chave publica, especifique o *path* da sua chave publica em uma  variável em [variables.tf](variables.tf) e crie esta key atraves do recurso *aws_key_pair* em  [main.tf](main.tf). ex:  
+      - Caso esteja usando o Linux e queira usar como **key pair** sua chave publica, especifique o *path* da sua chave publica em uma  variável em [variables.tf](worknodes/variables.tf) e crie esta key atraves do recurso *aws_key_pair* em  [nodes.tf](worknodes/nodes.tf). ex:  
 
       ```tf
           variable "key_path" {
@@ -95,7 +95,7 @@
             default     = "/home/usuario/.ssh/id_rsa.pub"
           }
       ```  
-    variables.tf   
+    [worknodes/variables.tf](worknodes/variables.tf)   
 
       ```tf
           resource "aws_key_pair" "myawskeypair" {  
@@ -103,7 +103,23 @@
               public_key = file("${var.key_path}")
           }
       ```  
-    main.tf   
+    [worknodes/nodes.tf](worknodes/nodes.tf)
+
+    
+      ```tf
+        ...
+
+        remote_access {
+          ec2_ssh_key               = aws_key_pair.myawskeypair.key_name
+          source_security_group_ids = [var.security_group_id]
+        }
+        ...
+
+      ```  
+    [worknodes/nodes.tf](worknodes/nodes.tf)
+
+    
+
   - Este projeto possue um módulo de security group adicional, as regras de ingress listadas ali são somente exemplos, então gerencie conforme necessitar 
   editando seus valores no arquivo `terraform.tfvars`.      
   - Certifique-se que possua as credenciais da AWS - **`AWS_ACCESS_KEY_ID`** e **`AWS_SECRET_ACCESS_KEY`**.
@@ -127,14 +143,12 @@ Agora é só executar os comandos do terraform:
 * `terraform apply` - Para aplicar a criação/alteração dos recursos. 
 
 ### Aguarde a criação do cluster EKS, após concluir execute os comandos abaixo:
-* Conectar ao cluster.            
-  `$ aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)`
+* Conecte o cluster com o comando abaixo completo ou preencha com o nome do cluster, a região e execute o comando.  
+
+  `aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)`
 
 * Pegar o kubeconfig.            
   `aws sts get-caller-identity`
-
-* Preencha o espaço abaixo com o nome do cluster e execute o comando.            
-  `aws eks --region us-east-1 update-kubeconfig --name <NOME_CLUSTER>`
 
 * Verificar o kubeconfig.            
   `cat ~/.kube/config`
