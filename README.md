@@ -85,8 +85,25 @@
 
 ## Como usar.
   - Para utilizar localmente , baixe o repositório e altere as variáveis localizadas no arquivo `terraform.tfvars` de acordo com a necessidade.
-  - A variável `count_available` define o quantidade de zonas de disponibilidade, públicas e privadas que seram criadas, a variável `key` especifíca o nome 
-  da **key pair** existente na AWS, certifique-se que ja possua uma ou então à crie e utilize na variável.      
+  - A variável `count_available` define o quantidade de zonas de disponibilidade, públicas e privadas que seram criadas.
+  - A variável `key` especifica o nome da **key pair** existente na AWS, certifique-se que ja possua uma ou então à crie e utilize na variável.   
+      - Caso esteja usando o Linux e queira usar como **key pair** sua chave publica, especifique o *path* da sua chave publica em uma  variável em [variables.tf](variables.tf) e crie esta key atraves do recurso *aws_key_pair* em  [main.tf](main.tf). ex:  
+
+      ```tf
+          variable "key_path" {
+            description = "Public key path"
+            default     = "/home/usuario/.ssh/id_rsa.pub"
+          }
+      ```  
+    variables.tf   
+
+      ```tf
+          resource "aws_key_pair" "myawskeypair" {  
+              key_name   = "myawskeypair"
+              public_key = file("${var.key_path}")
+          }
+      ```  
+    main.tf   
   - Este projeto possue um módulo de security group adicional, as regras de ingress listadas ali são somente exemplos, então gerencie conforme necessitar 
   editando seus valores no arquivo `terraform.tfvars`.      
   - Certifique-se que possua as credenciais da AWS - **`AWS_ACCESS_KEY_ID`** e **`AWS_SECRET_ACCESS_KEY`**.
