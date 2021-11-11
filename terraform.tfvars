@@ -44,9 +44,9 @@ tag-sg = "sg-cluster_EKS"
 
 sg-cidr = {
   22   = { to_port = 22, description = "Entrada ssh", protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] }
-  80   = { to_port = 80, description = "Entrada ssh", protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] }
-  443  = { to_port = 443, description = "Entrada ssh", protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] }
-  8080 = { to_port = 8080, description = "Entrada ssh", protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] }
+  80   = { to_port = 80, description = "Entrada http", protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] }
+  443  = { to_port = 443, description = "Entrada https", protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] }
+  8080 = { to_port = 8080, description = "Entrada custom para app", protocol = "tcp", cidr_blocks = ["0.0.0.0/0"] }
 }
 
 # local file

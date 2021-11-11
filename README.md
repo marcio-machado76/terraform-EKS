@@ -22,13 +22,13 @@
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.15.4 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 3.0 |
 
-### Providers
+## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_local"></a> [local](#provider\_local) | 2.1.0 |
 
-### Modules
+## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
@@ -37,13 +37,13 @@
 | <a name="module_security_group"></a> [security\_group](#module\_security\_group) | ./security_group | n/a |
 | <a name="module_worknodes"></a> [worknodes](#module\_worknodes) | ./worknodes | n/a |
 
-### Resources
+## Resources
 
 | Name | Type |
 |------|------|
 | [local_file.kubeconfig](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
 
-### Inputs
+## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
@@ -51,6 +51,7 @@
 | <a name="input_cidr"></a> [cidr](#input\_cidr) | CIDR da VPC | `string` | n/a | yes |
 | <a name="input_count_available"></a> [count\_available](#input\_count\_available) | Numero de Zonas de disponibilidade | `number` | n/a | yes |
 | <a name="input_file"></a> [file](#input\_file) | Local e nome do arquivo para armazenar o output do kubeconfig-certificate | `string` | n/a | yes |
+| <a name="input_key"></a> [key](#input\_key) | Nome da key pair | `string` | n/a | yes |
 | <a name="input_nacl"></a> [nacl](#input\_nacl) | Regras de Network Acls AWS | `map(any)` | n/a | yes |
 | <a name="input_node_instances_type"></a> [node\_instances\_type](#input\_node\_instances\_type) | tipo das instancias | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | Região na AWS | `string` | n/a | yes |
@@ -62,7 +63,7 @@
 | <a name="input_tagcluster"></a> [tagcluster](#input\_tagcluster) | Tag name do cluster | `string` | n/a | yes |
 | <a name="input_tagworknodes"></a> [tagworknodes](#input\_tagworknodes) | Tag name do worker node | `string` | n/a | yes |
 
-### Outputs
+## Outputs
 
 | Name | Description |
 |------|-------------|
@@ -81,9 +82,13 @@
 
 
 
+
 ## Como usar.
   - Para utilizar localmente , baixe o repositório e altere as variáveis localizadas no arquivo `terraform.tfvars` de acordo com a necessidade.
-  - A variável `count_available` define o quantidade de zonas de disponibilidade, públicas e privadas que seram criadas.
+  - A variável `count_available` define o quantidade de zonas de disponibilidade, públicas e privadas que seram criadas, a variável `key` especifíca o nome 
+  da **key pair** existente na AWS, certifique-se que ja possua uma ou então à crie e utilize na variável.      
+  - Este projeto possue um módulo de security group adicional, as regras de ingress listadas ali são somente exemplos, então gerencie conforme necessitar 
+  editando seus valores no arquivo `terraform.tfvars`.      
   - Certifique-se que possua as credenciais da AWS - **`AWS_ACCESS_KEY_ID`** e **`AWS_SECRET_ACCESS_KEY`**.
 
 #
