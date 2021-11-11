@@ -15,7 +15,7 @@ resource "aws_eks_node_group" "nodegroup" {
     max_unavailable = 2
   }
   remote_access {
-    ec2_ssh_key               = var.key
+    ec2_ssh_key               = aws_key_pair.myawskeypair.key_name
     source_security_group_ids = [var.security_group_id]
   }
 
@@ -29,4 +29,10 @@ resource "aws_eks_node_group" "nodegroup" {
   tags = {
     Name = var.tagworknodes
   }
+}
+
+
+resource "aws_key_pair" "myawskeypair" {  
+    key_name   = "myawskeypair"
+    public_key = file("${var.key_path}")
 }
