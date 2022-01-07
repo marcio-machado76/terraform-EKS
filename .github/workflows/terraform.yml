@@ -38,9 +38,8 @@ jobs:
         id: plan
         run: terraform plan -no-color
         
-      - name: Validação do tfsec
-        id: tfsec
-        run: |
-          docker run --rm -v $PWD:/eks -w /eks tfsec/tfsec .
+      - name: Terraform Apply
+        id: apply
+        run: terraform apply -auto-approve -no-color
        
       
