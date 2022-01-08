@@ -38,6 +38,3 @@ jobs:
         id: plan
         run: terraform plan -no-color
         
-      - name: Tfsec Validate
-        id: tfsec
-        run: docker run --rm -v $PWD:/eks -w /eks tfsec/tfsec:v0.58 .
