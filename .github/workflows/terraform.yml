@@ -28,7 +28,7 @@ jobs:
 
       - name: Terraform Init
         id: init
-        run: terraform init -backend-config="bucket=techbeer-cloudnaveia" -backend-config="key=stage-techbeer/terraform.tfstate"
+        run: terraform init 
 
       - name: Terraform Validate
         id: validate
@@ -37,4 +37,8 @@ jobs:
       - name: Terraform Plan
         id: plan
         run: terraform plan -no-color
+        
+      - name: Tfsec Validate                                                
+        id: tfsec                                                     
+        run: docker run --rm -v $PWD:/eks -w /eks tfsec/tfsec:v0.58 . 
         
