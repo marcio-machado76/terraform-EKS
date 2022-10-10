@@ -40,5 +40,5 @@ jobs:
         
       - name: Tfsec Validate                                                
         id: tfsec                                                     
-        run: docker run --rm -v $PWD:/eks -w /eks tfsec/tfsec:v0.58 . 
-        
+        run: docker run --rm -v $PWD:/eks -w /eks tfsec/tfsec . 
+     
